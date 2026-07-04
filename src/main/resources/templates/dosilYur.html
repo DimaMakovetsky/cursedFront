@@ -1,0 +1,142 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Заявление о досыле для юридических лиц</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="css/styleIndex.css">
+</head>
+<body>
+<header>
+    <a href="/"><p class="Button">На главную</p></a>
+    <a href="adminPage">
+        <div class="Button">
+            <p>Для администратора</p>
+        </div>
+    </a>
+</header>
+    <form action="#" method="post" th:action="@{/dosilYur}" th:object="${data}">
+        <section class="topSection">
+            <div>
+                <label for="fistDate">Дата подачи заявления:</label>
+                <input type="date" id="fistDate" th:field="*{firstDate}">
+            </div>
+            <div>
+                <label for="ops">Наименование ОПС:</label>
+                <input type="text" id="ops" th:field="*{ops}" maxlength="50">
+            </div>
+            <div>
+                <label for="name">Название организации/ИП:</label>
+                <textarea id="name" th:field="*{name}" maxlength="150"></textarea>
+            </div>
+            <div>
+                <label for="adressOld">Адрес, на который поступают почтовые отправления:</label>
+                <textarea id="adressOld" th:field="*{addressOld}" maxlength="150"></textarea>
+            </div>
+            <div>
+                <label for="adressNew">Адрес, на который требуется досылать почтовые отправления:</label>
+                <textarea id="adressNew" th:field="*{addressNew}" maxlength="150"></textarea>
+            </div>
+        </section>
+        <section class="inputSection">
+            <p>Отправления, которые требуется досылать:</p>
+
+            <div>
+                <input type="checkbox" th:field="*{check1}" id="check1" onclick="deselectLast()"><label>простые отправления письменной корреспонденции</label>
+            </div>
+            <div>
+                <input type="checkbox" th:field="*{check2}" id="check2" onclick="deselectLast()"><label>заказные отправления письменной корреспонденции</label>
+            </div>
+            <div>
+                <input type="checkbox" th:field="*{check3}" id="check3" onclick="deselectLast()"><label>уведомления о получении почтовых отправлений</label>
+            </div>
+            <div>
+                <input type="checkbox" th:field="*{check4}" id="check4" onclick="deselectLast()"><label>посылки</label>
+            </div>
+            <div>
+                <input type="checkbox" th:field="*{check5}" id="check5" onclick="deselectLast()"><label>отправления письменной корреспонденции с объявленной ценностью</label>
+            </div>
+            <div>
+                <input type="checkbox" th:field="*{check6}" id="check6" onclick="deselectLast()"><label>внутренние экспресс посылки, международные отправления ускоренной почты</label>
+            </div>
+            <div>
+                <input type="checkbox" th:field="*{check7}" id="check7" onclick="deselectLast()"><label>посылки E-commerce</label>
+            </div>
+            <div>
+                <input type="checkbox" th:field="*{checkAll}" id="checkAll" onclick="deselectAll()"><label>все отправления</label>
+            </div>
+        </section>
+        <section class="dateSection">
+            <div class="previousDateDov">
+                <label>Дата начала действия заявления: </label><input type="date" th:field="*{startDate}">
+            </div>
+            <div class="newDateDov">
+                <div class="newDateInput">
+                    <label>Срок действия заявления (максимум 6 месяцев): </label><input type="date" id="newDate" th:field="*{endDate}">
+                </div>
+                <div class="newDateCheckbox">
+                    <input type="checkbox" id="newDateCheckbox"  th:field="*{placeMax}" > <label>Поставить максимум</label>
+                </div>
+            </div>
+            <div class="peopleSection">
+
+                <div class="bossDiv">
+                    <label for="postBoss">Должность руководителя:</label>
+                    <input type="text" id="postBoss" th:field="*{postBoss}" maxlength="50">
+                </div>
+                <div class="bossDiv">
+                    <label for="fioShort">Фамилия и инициалы руководителя:</label>
+                    <input type="text" id="fioShort" th:field="*{fioShort}" maxlength="50">
+                </div>
+            </div>
+
+        </section>
+        <section class="emailSection">
+            <div>
+                <input type="checkbox" id="emailCheckbox" th:field="*{needEmail}">
+                <label>Хочу получить уведомление перед истечением срока действия заявления</label>
+            </div>
+            <div class="emailDiv">
+                <label>Email</label><input type="text" id="email" th:field="*{email}" maxlength="45">
+            </div>
+        </section>
+        <div class="sendButtonDiv">
+
+            <input type="submit" value="Заполнить" class="sendButton">
+        </div>
+        <div>
+            <p th:text="${error}"></p>
+        </div>
+    </form>
+    <div id="errorScreen" class="errorBack" th:if="${error!=null}">
+        <div class="errorBox">
+            <p th:text="${error}"></p>
+            <button id="okButton">Ок</button>
+        </div>
+    </div>
+    <script>
+        document.getElementById("email").disabled=true;
+
+        function deselectAll() {
+            document.getElementById("check1").checked=false;
+            document.getElementById("check2").checked=false;
+            document.getElementById("check3").checked=false;
+            document.getElementById("check4").checked=false;
+            document.getElementById("check5").checked=false;
+            document.getElementById("check6").checked=false;
+            document.getElementById("check7").checked=false;
+        }
+        function deselectLast() {
+            document.getElementById("checkAll").checked=false;
+        }
+        document.getElementById("newDateCheckbox").addEventListener('change', () => {
+                document.getElementById("newDate").disabled=document.getElementById("newDateCheckbox").checked;
+            });
+        document.getElementById("emailCheckbox").addEventListener('change', () => {
+                document.getElementById("email").disabled=!document.getElementById("emailCheckbox").checked;
+            });
+        document.getElementById("okButton").addEventListener('click', () => {
+                document.getElementById("errorScreen").style.display='none';
+            });
+    </script>
+</body>
+</html>

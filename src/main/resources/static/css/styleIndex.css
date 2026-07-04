@@ -1,0 +1,469 @@
+* {
+    padding:0;
+    margin:0;
+}
+html{
+    height:fit-content;
+
+    min-height:100%;
+}
+textarea {
+    resize: none;
+}
+a {
+    text-decoration: none;
+    color: black;
+
+}
+header
+{
+    display:flex;
+    justify-content: space-between;
+}
+
+.headerButton {
+    cursor:pointer;
+    margin:5px;
+    border-radius: 10px;
+    transition:0.5s;
+    padding:10px 30px;
+}
+.headerButton input{
+    cursor:pointer;
+}
+.headerButton:hover {
+    color: black;
+    background: #EDFAF7;
+}
+
+.headerButton input, .headerButton p{
+    background:transparent;
+    border:none;
+
+}
+.Button {
+    padding:10px 30px;
+    cursor:pointer;
+    border-radius: 10px;
+
+}
+.Button input {
+    background: #54bee8;
+    border-radius: 10px;
+    padding:10px 30px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.Button input:hover {
+    background: #4E82F2;
+
+}
+body
+{
+    margin:0;
+    height:fit-content;
+    min-height:100%;
+    background: linear-gradient(191deg,rgba(78, 130, 242, 1) 0%, rgba(147, 245, 217, 1) 56%);
+    position:relative;
+    top:0;
+    left:0;
+}
+.bodyIndexSection {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100%;
+    gap:50px;
+    margin-top:20%;
+}
+.item{
+    display: flex;
+    align-items:center;
+    max-width:170px;
+    border: 5px #4E82F2 dashed;
+    height: 100px;
+    padding:10px;
+    transition: 0.5s;
+}
+.item:hover {
+    background: #4E82F2;
+    color: #EDFAF7;
+    scale: 1.15;
+}
+.item p {
+    text-align:center;
+}
+
+/*
+
+            LOGIN
+
+*/
+
+.bodyLoginSection {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100%;
+    gap:50px;
+    margin-top:20%;
+}
+.bodyLoginSection form {
+    width: 250px;
+}
+.loginFormText {
+    margin-bottom:5px;
+    display:flex;
+    justify-content:space-between;
+}
+.loginButtonDiv {
+    margin-top: 10px;
+    display:flex;
+    justify-content:center;
+}
+.loginButtonDiv input {
+    height: 25px;
+    width: 50px;
+    background: #54bee8;
+    background: linear-gradient(281deg,rgba(84, 190, 232, 1) 0%, rgba(158, 232, 191, 1) 56%);
+    border-radius:10px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.loginButtonDiv input:hover {
+    background: rgba(78, 130, 242, 1);
+    color: #EDFAF7;
+}
+.loginNotification p{
+    text-align:center;
+    color:red;
+}
+
+/*
+
+        DOVERENNOST
+
+*/
+.bodyDovSection {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100%;
+    gap:50px;
+    max-width:1650px;
+
+}
+.dovForm {
+    display:flex;
+    flex-direction:column;
+}
+
+
+.topSection {
+    display:flex;
+    flex-direction:column;
+    justify-content: space-between;
+    gap:10px;
+    max-width:60%;
+    margin:auto;
+    margin-bottom:20px;
+}
+input[type="text"], input[type="password"], input[type="date"], textarea {
+    background: #52CBF7;
+    border: 1px black solid;
+    border-radius: 10px;
+    padding: 5px 8px;
+    transition: 0.5s;
+}
+input[type="text"]:focus, input[type="date"]:focus, textarea:focus {
+    background:rgba(158, 232, 191, 1);
+}
+input[type="radio"], input[type="checkbox"] {
+    margin-right: 5px;
+}
+input:disabled {
+    opacity: 40%;
+}
+.topSection textarea, .topSection input {
+    width: 300px;
+
+}
+.topSection div{
+    display:flex;
+    justify-content: space-between;
+    gap:15px;
+}
+
+
+.radioSection {
+    margin: auto;
+    padding: 0 10%;
+    margin-bottom:20px;
+}
+.radioSectionPart{
+    display:flex;
+    gap:10px;
+}
+.leftPart{
+    flex:1;
+    padding-left:5px;
+    padding-top:5px;
+}
+.rightPart {
+    flex:2;
+    padding: 10px;
+}
+.rightPart div {
+    margin-top: 5px;
+}
+#phoneCode {
+    width: 20px;
+    margin-right:5px;
+    margin-left:5px;
+}
+.peopleSection {
+    margin:auto;
+    display:flex;
+    flex-direction:column;
+    gap: 5px;
+    align-items:center;
+    margin-bottom: 20px;
+}
+.bossDiv{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+.bossDiv div{
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+    gap:15px;
+
+}
+.bossDiv input{
+    height:20px;
+}
+#workers {
+    width:100%;
+}
+.worker {
+    display: flex;
+    justify-content:space-between;
+    gap: 30px;
+}
+.worker div {
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+}
+.worker div:first-child {
+    flex:1;
+}
+.worker div:last-child {
+    flex:4;
+}
+.worker div:last-child input{
+    width:90%;
+}
+.dateSection {
+    margin:auto;
+    display:flex;
+    flex-direction:column;
+    gap: 10px;
+    align-items:center;
+    width:60%;
+}
+.previousDateDov {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width:100%;
+}
+.newDateDov {
+    display: flex;
+    flex-direction:column;
+    width:100%;
+
+}
+.newDateInput {
+    display: flex;
+    justify-content:space-between;
+    width:100%;
+
+}
+.newDateCheckbox {
+    display: flex;
+    justify-content:right;
+}
+.emailSection {
+    margin:auto;
+    max-width:50%;
+    display:flex;
+    flex-direction:column;
+    gap: 15px;
+    align-items:center;
+    margin-bottom:20px;
+    margin-top:20px;
+}
+.emailDiv {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap: 20px;
+}
+.sendButtonDiv {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-bottom:50px;
+
+}
+.sendButtonDiv input {
+    cursor: pointer;
+}
+.sendButton {
+    width:150px;
+    height:50px;
+    color: #EDFAF7;
+    background: #4E82F2;
+    border: 1px black solid;
+    border-radius: 10px;
+    transition: 0.5s;
+}
+.sendButton:hover {
+    background:rgba(158, 232, 191, 1);
+    color: black;
+    scale: 1.15;
+}
+/*
+
+        DOSIL
+
+*/
+.inputSection {
+    display:flex;
+    flex-direction: column;
+    max-width:60%;
+    margin:auto;
+    gap:10px;
+    margin-bottom:20px;
+}
+/*
+
+        ERROR
+
+*/
+.errorBack {
+    position:absolute;
+    top:0;
+    left:0;
+    height:100%;
+    width:100%;
+    background:gray;
+     background: rgba(144,144,144, 0.5);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+.errorBox {
+    position: fixed;
+    top: 50%;
+    left:50%;
+    width: 400px;
+    height:200px;
+    margin-top: -100px;
+    margin-left: -200px;
+    background: linear-gradient(194deg,rgba(84, 190, 232, 1) 0%, rgba(189, 255, 219, 1) 56%);
+    display:flex;
+    flex-direction:column;
+    justify-content:space-evenly;
+    align-items:center;
+    border-radius:10px;
+    border: 5px #54bee8 solid;
+}
+.errorBox button {
+    width: 50px;
+    height: 25px;
+}
+.errorBox p {
+    text-align:center;
+}
+#okButton {
+    height: 35px;
+    width: 75px;
+    background: #54bee8;
+    border: 1px black solid;
+    border-radius:10px;
+}
+/*
+
+    error page
+
+*/
+.notFound {
+    flex-direction: column
+}
+
+/*
+
+        ADMIN PAGE
+
+*/
+.errorListSection {
+    margin: auto;
+    margin-top:10px;
+    max-width:60%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap: 5px;
+    margin-bottom:20px;
+}
+
+.errorList, .tableHeader{
+    width:100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+.errorList {
+    margin-top: 5px;
+}
+.tableHeader {
+    padding: 0 20px;
+}
+.tableHeader p {
+    text-align:center;
+}
+
+.idP, .codeP {
+    flex:1;
+    text-align:center
+}
+.errorP {
+    flex:8;
+    text-align:center
+}
+.logList {
+    display:flex;
+    width: 100%;
+    justify-content:space-evenly;
+    margin-top: 5px;
+}
+.logList p {
+    align-content:center;
+    text-align: center;
+}
+.logList a {
+    background: #EDFAF7;
+    height:30px;
+    width:75px;
+    align-content:center;
+    text-align: center;
+    border-radius: 10px;
+    transition: 0.5s;
+}
+.logList a:hover {
+    background: #54bee8;
+}

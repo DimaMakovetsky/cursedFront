@@ -1,0 +1,360 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Заявление-доверенность</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="css/styleIndex.css">
+
+</head>
+<body>
+    <header>
+        <a href="/" class="headerButton"><p>На главную</p></a>
+        <a href="adminPage">
+            <div class="Button">
+                <p>Для администратора</p>
+            </div>
+        </a>
+    </header>
+    <form action="#" method="post" th:action="@{/doverennost}" th:object="${data}" class="dovForm">
+        <section class="topSection">
+            <div>
+                <label for="fistDate">Дата подачи заявления:</label>
+                <input type="date" id="fistDate" th:field="*{firstDate}">
+    <!--            -->
+            </div>
+            <div>
+                <label for="city">Населённый пункт:</label>
+                <input type="text" id="city" th:field="*{city}" maxlength="40">
+    <!--            -->
+            </div>
+            <div>
+                <label for="ops">Обслуживающее ОПС:</label>
+                <input type="text" id="ops" th:field="*{ops}" maxlength="40">
+    <!--        -->
+            </div>
+            <div>
+                <label for="name">Название:</label>
+                <textarea id="name" th:field="*{name}" maxlength="200"></textarea>
+    <!--        "-->
+            </div>
+            <div>
+                <label for="adress">Почтовый адрес:</label>
+                <textarea id="adress" th:field="*{address}" maxlength="200"></textarea>
+    <!---->
+            </div>
+            <div>
+                <label for="notWorkingDays">Выходные дни:</label>
+                <input type="text" id="notWorkingDays" th:field="*{notWorkingDays}" maxlength="40">
+    <!--            -->
+            </div>
+        </section>
+        <section class="radioSection">
+            <div class="radioSectionPart">
+                <div class="leftPart">
+                    <p>1. печатные средства массовой информации, простые отправления
+                        письменной корреспонденции, простые
+                        уведомления о получении почтовых
+                        отправлений, извещения о поступлении
+                        регистрируемых почтовых отправлений,
+                        в т.ч. заказных</p>
+                </div>
+                <div class="rightPart">
+                    <div>
+                        <input type="radio" id="radio11" value="radio11" th:field="*{radioMain}"><label>в объекте почтовой связи через абонементный почтовый ящик №</label><input type="text" id="abonentBox" th:field="*{abonentBox}" maxlength="5">
+                    </div>
+                    <div>
+                        <input type="radio" id="radio12" value="radio12" th:field="*{radioMain}"><label>уполномоченному лицу на первом этаже здания, в котором расположено
+                        юридическое лицо/индивидуальный предприниматель</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="radio13" value="radio13" th:field="*{radioMain}"><label>через почтовый ящик, установленный на первом этаже здания, в котором
+                        расположено юридическое лицо/индивидуальный предприниматель</label>
+                    </div>
+                </div>
+            </div>
+            <div class="radioSectionPart">
+                <div class="leftPart">
+                    <p>2. заказные отправления письменной
+                        корреспонденции, заказные уведомления
+                        о получении почтовых отправлений</p>
+                </div>
+                <div class="rightPart">
+                    <div>
+                        <input type="radio" value="radio21" th:field="*{radio2}" id="radio21"><label>уполномоченному на первом этаже здания, в котором расположено
+                        юридическое лицо/индивидуальный предприниматель</label>
+                    </div>
+                    <div>
+                        <input type="radio" value="radio22" th:field="*{radio2}" id="radio22"><label>в объекте почтовой связи (доставка извещений о поступлении отправлений
+                        осуществляется)</label>
+                    </div>
+                </div>
+            </div>
+            <div class="radioSectionPart">
+                <div class="leftPart">
+                    <p>3. все, указанное в п.п. 1, 2 в т.ч.
+                        адресованное «до востребования»</p>
+                </div>
+                <div class="rightPart">
+                    <div>
+                        <input type="radio" value="radio3" th:field="*{radioMain}" id="radio3"><label>в объекте почтовой связи «до востребования» (доставка извещений о
+                        поступлении отправлений не осуществляется)</label>
+                    </div>
+                </div>
+            </div>
+            <div class="radioSectionPart">
+                <div class="leftPart">
+                    <p>4. все, указанное в п.п. 1, 2</p>
+                </div>
+                <div class="rightPart">
+                    <div>
+                        <div>
+                            <input type="radio" value="radio4" th:field="*{radioMain}" id="radio4"><label>почтовым курьером, согласно заключенному договору №<input type="text" id="contract4Num" th:field="*{contract4Num}" maxlength="10"> от
+                            <input type="date" id="contract4Date" th:field="*{contract4Date}"></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="radioSectionPart">
+                <div class="leftPart">
+                    <p>5. все, указанное в п.п. 1, 2</p>
+                </div>
+                <div class="rightPart">
+                    <div>
+                        <div>
+                            <input type="radio" value="radio5" th:field="*{radioMain}" id="radio5"><label>доставка на этаж выше/ниже первого, согласно заключенному договору №<input type="text" id="contract5Num" th:field="*{contract5Num}" maxlength="10"> от
+                            <input type="date" id="contract5Date" th:field="*{contract5Date}"></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="radioSectionPart">
+                <div class="leftPart">
+                    <p>6. отправления Netлiст, телеграммы</p>
+                </div>
+                <div class="rightPart">
+                    <div>
+                        <input type="radio" value="radio61" th:field="*{radio6}"><label>доставка по адресу, указанному на телеграмме, отправлении Netлiст, с
+                        учетом режима работы: </label><input type="text" id="workTime" th:field="*{workTime}" maxlength="30">
+                    </div>
+                    <div>
+                        <input type="radio" value="radio62" th:field="*{radio6}"><label>передача по городскому телефону/факсу. Код:</label><input type="text" th:field="*{phoneCode}" id="phoneCode" maxlength="3">
+                        <label>Телефон:</label><input type="text" th:field="*{number}" id="number" maxlength="7">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="peopleSection">
+            <div class="bossDiv">
+                <div>
+                    <label>Должность управляющего: </label><input type="text" th:field="*{bossPosition}" maxlength="40">
+                </div>
+                <div>
+                    <label>Фамилия и инициалы управляющего: </label><input type="text" th:field="*{bossFio}" maxlength="40">
+                </div>
+                <div>
+                    <label>Наименование документа, по которому действует управляющий: </label><input type="text" th:field="*{bossDocument}" maxlength="40" >
+                </div>
+            </div>
+            <div class="check">
+                <input type="checkbox" th:field="*{toAddWorkers}" id="toAddWorkers"><label>Уполномочить сотрудников</label>
+            </div>
+            <div id="workers">
+
+                <div class="worker">
+                    <div>
+                        <label>Должность:</label><input type="text" class="workerPosition" th:field="*{worker1Position}" maxlength="40">
+                    </div>
+                    <div>
+                        <label>ФИО полностью:</label><input type="text" class="workerFio" th:field="*{worker1Fio}" maxlength="50">
+                    </div>
+                </div>
+                <div class="worker">
+                    <div>
+                        <label>Должность:</label><input type="text" class="workerPosition" th:field="*{worker2Position}" maxlength="40">
+                    </div>
+                    <div>
+                        <label>ФИО полностью:</label><input type="text" class="workerFio" th:field="*{worker2Fio}" maxlength="50">
+                    </div>
+                </div>
+                <div class="worker">
+                    <div>
+                        <label>Должность:</label><input type="text" class="workerPosition" th:field="*{worker3Position}" maxlength="40">
+                    </div>
+                    <div>
+                        <label>ФИО полностью:</label><input type="text" class="workerFio" th:field="*{worker3Fio}" maxlength="50">
+                    </div>
+                </div>
+                <div class="worker">
+                    <div>
+                        <label>Должность:</label><input type="text" class="workerPosition" th:field="*{worker4Position}" maxlength="40">
+                    </div>
+                    <div>
+                        <label>ФИО полностью:</label><input type="text" class="workerFio" th:field="*{worker4Fio}" maxlength="50">
+                    </div>
+                </div>
+
+                <div class="worker">
+                    <div>
+                        <label>Должность:</label><input type="text" class="workerPosition" th:field="*{worker5Position}" maxlength="40">
+                    </div>
+                    <div>
+                        <label>ФИО полностью:</label><input type="text" class="workerFio" th:field="*{worker5Fio}" maxlength="50">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="dateSection">
+            <div class="previousDateDov">
+                <label>Дата подачи прошлого заявления (необязательно):</label><input type="date" th:field="*{previousDate}">
+            </div>
+            <div class="newDateDov">
+                <div class="newDateInput">
+                    <label>Срок действия заявления (максимум 3 года): </label><input type="date" id="newDate" th:field="*{newDate}">
+                </div>
+                <div class="newDateCheckbox">
+                    <input type="checkbox" id="newDateCheckbox" th:field="*{placeMax}"> <label>Поставить максимум</label>
+                </div>
+            </div>
+        </section>
+        <section class="emailSection">
+            <div>
+                <input type="checkbox" id="emailCheckbox" th:field="*{needEmail}">
+                <label>Хочу получить уведомление перед истечением срока действия заявления</label>
+            </div>
+            <div class="emailDiv">
+                <label>Email</label><input type="text" id="email" th:field="*{email}" maxlength="50">
+            </div>
+        </section>
+        <div class="sendButtonDiv">
+
+            <input type="submit" value="Заполнить" class="sendButton">
+        </div>
+    </form>
+    <div id="errorScreen" class="errorBack" th:if="${error!=null}">
+        <div class="errorBox">
+            <p th:text="${error}"></p>
+            <button id="okButton">Ок</button>
+        </div>
+    </div>
+</body>
+<script>
+        function deselect1() {
+            document.getElementById("radio11").checked=false;
+            document.getElementById("radio12").checked=false;
+            document.getElementById("radio13").checked=false;
+        }
+        function deselect2() {
+            document.getElementById("radio21").checked=false;
+            document.getElementById("radio22").checked=false;
+        }
+        function deselectBottom() {
+
+            document.getElementById("radio3").checked=false;
+            document.getElementById("radio4").checked=false;
+            document.getElementById("radio5").checked=false;
+        }
+        function disableText() {
+            document.getElementById("abonentBox").disabled=true;
+            document.getElementById("contract4Num").disabled=true;
+            document.getElementById("contract4Date").disabled=true;
+            document.getElementById("contract5Date").disabled=true;
+            document.getElementById("contract5Num").disabled=true;
+            document.getElementById("workTime").disabled=true;
+            document.getElementById("phoneCode").disabled=true;
+            document.getElementById("number").disabled=true;
+        }
+        disableText();
+        disableOrEnable(document.getElementsByClassName("workerFio"), true);
+        disableOrEnable(document.getElementsByClassName("workerPosition"), true);
+        document.getElementById("email").disabled=true;
+
+        document.getElementById("radio11").addEventListener('change', () => {
+                deselectBottom();
+                disableText();
+                document.getElementById("abonentBox").disabled=false;
+            });
+        document.getElementById("radio12").addEventListener('change', () => {
+                deselectBottom();
+                disableText();
+            });
+        document.getElementById("radio13").addEventListener('change', () => {
+                deselectBottom();
+                disableText();
+            });
+        document.getElementById("radio21").addEventListener('change', () => {
+                let isRadio11=false;
+                if(document.getElementById("radio11").checked) {
+                    isRadio11=true;
+                }
+                deselectBottom();
+                disableText();
+                document.getElementById("abonentBox").disabled=!isRadio11;
+            });
+        document.getElementById("radio22").addEventListener('change', () => {
+                let isRadio11=false;
+                if(document.getElementById("radio11").checked) {
+                    isRadio11=true;
+                }
+                deselectBottom();
+                disableText();
+                document.getElementById("abonentBox").disabled=!isRadio11;
+
+            });
+        document.getElementById("radio3").addEventListener('change', () => {
+                disableText();
+                document.getElementById("radio4").checked=false;
+                document.getElementById("radio5").checked=false;
+                deselect1();
+                deselect2();
+            });
+        document.getElementById("radio4").addEventListener('change', () => {
+                disableText();
+                document.getElementById("radio3").checked=false;
+                document.getElementById("radio5").checked=false;
+                document.getElementById("contract4Date").disabled=false;
+                document.getElementById("contract4Num").disabled=false;
+                deselect1();
+                deselect2();
+            });
+        document.getElementById("radio5").addEventListener('change', () => {
+                disableText();
+                document.getElementById("radio3").checked=false;
+                document.getElementById("radio4").checked=false;
+                document.getElementById("contract5Date").disabled=false;
+                document.getElementById("contract5Num").disabled=false;
+                deselect1();
+                deselect2();
+            });
+        document.getElementById("radio61").addEventListener('change', () => {
+                document.getElementById("radio62").checked=false;
+                document.getElementById("workTime").disabled=false;
+                document.getElementById("number").disabled=true;
+                document.getElementById("phoneCode").disabled=true;
+            });
+        document.getElementById("radio62").addEventListener('change', () => {
+                document.getElementById("radio61").checked=false;
+                document.getElementById("workTime").disabled=true;
+                document.getElementById("number").disabled=false;
+                document.getElementById("phoneCode").disabled=false;
+            });
+        function disableOrEnable(elems, isDisabled){
+            for(var i = 0;i<elems.length;i++){
+                elems[i].disabled = isDisabled;
+            }
+        }
+        document.getElementById("toAddWorkers").addEventListener('change', () => {
+                disableOrEnable(document.getElementsByClassName("workerFio"), !document.getElementById("toAddWorkers").checked);
+                disableOrEnable(document.getElementsByClassName("workerPosition"), !document.getElementById("toAddWorkers").checked);
+            });
+        document.getElementById("newDateCheckbox").addEventListener('change', () => {
+                document.getElementById("newDate").disabled=document.getElementById("newDateCheckbox").checked;
+            });
+        document.getElementById("emailCheckbox").addEventListener('change', () => {
+                document.getElementById("email").disabled=!document.getElementById("emailCheckbox").checked;
+            });
+        document.getElementById("okButton").addEventListener('click', () => {
+                document.getElementById("errorScreen").style.display='none';
+            });
+
+    </script>
+</html>

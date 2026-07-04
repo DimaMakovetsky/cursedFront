@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Администрирование</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="css/styleIndex.css">
+</head>
+<body>
+<header>
+    <a href="/" ><p class="headerButton">На главную</p></a>
+    <form th:action="@{/logout}" method="post">
+        <div class="headerButton">
+            <input type="submit" value="Выйти"/>
+        </div>
+    </form>
+</header>
+<section class="errorListSection">
+    <form th:action="@{/adminPageErrors}" method="post">
+        <div class="Button">
+            <input type="submit" value="Получить список ошибок"/>
+        </div>
+    </form>
+    <form th:action="@{/adminPageLogs}" method="post">
+        <div class="Button">
+            <input type="submit" value="Получить список логов"/>
+        </div>
+    </form>
+    <p th:if="${empty==true}">Ошибок нет</p>
+    <p th:if="${emptyLogs==true}">Логов нет</p>
+    <div th:if="${empty==false}" class="tableHeader">
+        <p class="idP">Id</p>
+        <p class="codeP">Код</p>
+        <p class="errorP">Ошибка</p>
+    </div>
+    <div th:if="${empty==false}" th:each="item : ${errorList}" class="errorList">
+        <p class="idP" th:text="${item.id}"></p>
+        <p class="codeP" th:text="${item.code}"></p>
+        <p class="errorP" th:text="${item.message}"></p>
+    </div>
+    <div th:if="${emptyLogs==false}" th:each="item : ${logList}" class="logList">
+        <p th:text="${item}"></p>
+        <a th:href="@{/adminPageLogs/download?file={file}(file=${item})}">
+            <div>
+                Скачать
+            </div>
+        </a>
+    </div>
+</section>
+</body>
+</html>
